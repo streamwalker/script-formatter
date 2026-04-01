@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "vite-dev",
+      "runtimeExecutable": "/Users/Phil_Russell/.nvm/versions/node/v24.14.1/bin/node",
+      "runtimeArgs": ["node_modules/.bin/vite"],
+      "port": 8080
+    },
+    {
+      "name": "vite-preview",
+      "runtimeExecutable": "/Users/Phil_Russell/.nvm/versions/node/v24.14.1/bin/node",
+      "runtimeArgs": ["node_modules/.bin/vite", "preview"],
+      "port": 4173
+    }
+  ]
+}

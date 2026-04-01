@@ -1,0 +1,66 @@
+project_id = "luvxgfwvtisgfqtcjoyp"
+
+[functions.generate-panel]
+verify_jwt = false
+
+[functions.extract-script]
+verify_jwt = false
+
+[functions.analyze-character]
+verify_jwt = false
+
+[functions.analyze-pose]
+verify_jwt = false
+
+[functions.generate-character-reference]
+verify_jwt = false
+
+[functions.check-consistency]
+verify_jwt = false
+
+[functions.generate-panel-enhanced]
+verify_jwt = false
+
+[functions.analyze-profile]
+verify_jwt = false
+
+[functions.transfer-style]
+verify_jwt = false
+
+[functions.analyze-composition]
+verify_jwt = false
+
+[functions.generate-backstory]
+verify_jwt = false
+
+[functions.generate-story-suggestions]
+verify_jwt = false
+
+[functions.detect-mood]
+verify_jwt = false
+
+[functions.analyze-emotional-arc]
+verify_jwt = false
+
+[functions.apply-art-style]
+verify_jwt = false
+
+[functions.generate-batch-panels]
+verify_jwt = false
+
+[functions.analyze-scene-layout]
+verify_jwt = false
+
+[functions.send-notification]
+verify_jwt = false
+
+[functions.generate-dialogue]
+verify_jwt = false
+
+[functions.generate-character-portrait]
+
+[functions.generate-scenes]
+verify_jwt = false
+
+[functions.implement-fixes]
+verify_jwt = false

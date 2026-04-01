@@ -1,0 +1,1 @@
+ALTER TABLE public.story_projects ADD COLUMN scene_data jsonb DEFAULT NULL;
