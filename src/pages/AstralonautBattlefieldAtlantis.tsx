@@ -18,6 +18,7 @@ import NotebookTranscript001A from "@/components/storyplans/NotebookTranscript00
 import NotebookTranscript001B from "@/components/storyplans/NotebookTranscript001B";
 import NotebookTranscript002A from "@/components/storyplans/NotebookTranscript002A";
 import NotebookTranscript002B from "@/components/storyplans/NotebookTranscript002B";
+import NotebookTranscript003 from "@/components/storyplans/NotebookTranscript003";
 
 const sections = [
   { id: "page-1", label: "Page 1 — World & Character Lists" },
