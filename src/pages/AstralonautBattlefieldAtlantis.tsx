@@ -18,6 +18,7 @@ import NotebookTranscript001A from "@/components/storyplans/NotebookTranscript00
 import NotebookTranscript001B from "@/components/storyplans/NotebookTranscript001B";
 import NotebookTranscript002A from "@/components/storyplans/NotebookTranscript002A";
 import NotebookTranscript002B from "@/components/storyplans/NotebookTranscript002B";
+import NotebookTranscript003 from "@/components/storyplans/NotebookTranscript003";
 
 const sections = [
   { id: "page-1", label: "Page 1 — World & Character Lists" },
@@ -68,6 +69,7 @@ const sections = [
   { id: "notebook-001b", label: "Notebook Transcript 001B — Issues 7-12 & Plotting" },
   { id: "notebook-002a", label: "Notebook Transcript 002A — Issues 9-10 Action Scripts" },
   { id: "notebook-002b", label: "Notebook Transcript 002B — Issues 10-12 & World-Building" },
+  { id: "notebook-003", label: "Notebook Transcript 003 — BA Rewrites & Series Bible (Jan 27, 2016)" },
   { id: "ba-characters", label: "Character Creator" },
   { id: "ba-story-plan", label: "Story Plan — Three-Act / Eight-Sequence Breakdown" },
 ];
@@ -124,6 +126,7 @@ const pageContent: Record<string, string> = {
   "notebook-001b": "Notebook Transcript 001B Issues 7-12 Planet Ares Lyssa Gossamer bar Nemisis voice Orion meets Atlas Son of Zeus fire eyes Ghost Shroud cloaking Rhea discovers Talos surveillance Artemis launch spacewalk sword Carlo confrontation training Level 2 Ascension",
   "notebook-002a": "Notebook Transcript 002A Issues 9-10 Anat Nemisis Velour chase skycycles Halimar City pursuit Spiderman sharpshooting Lelantos Orion training fight Eros wall-kick Tony Jaa Artemis metallic web Rhea Carlo Atlas Talos wound arm rock form transformation",
   "notebook-002b": "Notebook Transcript 002B Issues 10-12 Velour investigation Prometheus incompetence Orolyn Lyssa targeted Anders telepathic Revote mole gun corridor chase exhaust tube skycycle Eros Astral Plane rescue Gossamer prison Lelantos anchor timer Atlas Artemis ship fight Orion telepathic news report plot architecture three parallel Pandora deep lore adopted Anubis mind entity Osiris Level 3 screenplay high concept Technopath Neridian Galaxy Poseidon finale rock creature ocean floor doomsday Constra",
+  "notebook-003": "Notebook Transcript 003 January 2016 rewrites Terran Sol Earth destroyed Atlas ark Atlantis Ocean Gaian Homeworld BA1 BA2 BA3 Victory Tragedy Poseidon Luminator Osiris Pandora Chronos Arolyn Ares Astra coma Vanier Aesir Odinn limited series Atlas Ascends Rise Gaians Fall Nerria Talos HUD criminals Ledge Nemesis Annihilator Berserker Lo-Zar Conjurer Tempest Apex Humans Arens Helotians Draconians emotional attachments Zeus betrayal Rhea estranged Orion kinship Carlo Benes Asterya Lady Wood Gadriel Star Wars merge Luke Leila Hercrayless Akropolis ascended battle Kickstarter hi-concept Artemis backstory Lo-Zar silicon nanotech clone Zeus powers Anubis Sylista saboteur Abator suicide run Rhea dies Olympia Neptunian Ghelt Poseidon Anubis dynamic bow scrape human filth Nerrian Protectorate character comparisons Batman Wolverine Superman Cyclops Wonder Woman Terminator Cable Picard casting Tom Welling Liv Tyler Karl Urban Timberlake Ealy Spiridakos Mooney Chung Kravitz Yeun Somerhalder Wong Saldana Yune",
 };
 
 const AstralonautBattlefieldAtlantis = () => {
@@ -1284,6 +1287,7 @@ The ground battle runs parallel to the orbital engagement — creating cross-cut
         {visibleIds.has("notebook-001b") && <NotebookTranscript001B />}
         {visibleIds.has("notebook-002a") && <NotebookTranscript002A />}
         {visibleIds.has("notebook-002b") && <NotebookTranscript002B />}
+        {visibleIds.has("notebook-003") && <NotebookTranscript003 />}
 
         {visibleIds.has("ba-characters") && (
           <PageSection id="ba-characters" title="Character Creator">
