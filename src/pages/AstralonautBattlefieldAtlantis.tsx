@@ -1287,6 +1287,7 @@ The ground battle runs parallel to the orbital engagement — creating cross-cut
         {visibleIds.has("notebook-001b") && <NotebookTranscript001B />}
         {visibleIds.has("notebook-002a") && <NotebookTranscript002A />}
         {visibleIds.has("notebook-002b") && <NotebookTranscript002B />}
+        {visibleIds.has("notebook-003") && <NotebookTranscript003 />}
 
         {visibleIds.has("ba-characters") && (
           <PageSection id="ba-characters" title="Character Creator">
