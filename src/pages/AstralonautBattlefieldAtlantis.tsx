@@ -69,6 +69,7 @@ const sections = [
   { id: "notebook-001b", label: "Notebook Transcript 001B — Issues 7-12 & Plotting" },
   { id: "notebook-002a", label: "Notebook Transcript 002A — Issues 9-10 Action Scripts" },
   { id: "notebook-002b", label: "Notebook Transcript 002B — Issues 10-12 & World-Building" },
+  { id: "notebook-003", label: "Notebook Transcript 003 — BA Rewrites & Series Bible (Jan 27, 2016)" },
   { id: "ba-characters", label: "Character Creator" },
   { id: "ba-story-plan", label: "Story Plan — Three-Act / Eight-Sequence Breakdown" },
 ];
