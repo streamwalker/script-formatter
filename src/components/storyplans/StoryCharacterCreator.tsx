@@ -131,23 +131,34 @@ function moralLabel(v: number) {
 
 /* ── Export Character Sheet ── */
 function exportCharacterSheet(characters: CharacterData[], getCharImage: (c: CharacterData) => string, storyTitle: string) {
+  const esc = (v: unknown): string =>
+    String(v ?? '')
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  const safeImg = (url: string) => {
+    const u = String(url ?? '');
+    return /^(https?:|data:image\/)/i.test(u) ? esc(u) : '';
+  };
   const statBar = (label: string, value: number) =>
     `<div style="display:flex;align-items:center;gap:8px;margin:2px 0">
-      <span style="width:32px;font-size:11px;color:#d4a574;font-family:monospace">${label}</span>
+      <span style="width:32px;font-size:11px;color:#d4a574;font-family:monospace">${esc(label)}</span>
       <div style="flex:1;height:8px;background:#1a1a2e;border-radius:4px;overflow:hidden">
-        <div style="width:${value}%;height:100%;background:linear-gradient(90deg,#d97706,#f59e0b);border-radius:4px"></div>
+        <div style="width:${Number(value) || 0}%;height:100%;background:linear-gradient(90deg,#d97706,#f59e0b);border-radius:4px"></div>
       </div>
-      <span style="width:24px;text-align:right;font-size:11px;color:#f59e0b;font-family:monospace">${value}</span>
+      <span style="width:24px;text-align:right;font-size:11px;color:#f59e0b;font-family:monospace">${Number(value) || 0}</span>
     </div>`;
 
   const charCard = (c: CharacterData) =>
     `<div style="break-inside:avoid;background:#0f0f1a;border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:20px;margin-bottom:16px">
       <div style="display:flex;gap:16px">
-        <img src="${getCharImage(c)}" style="width:120px;height:160px;object-fit:cover;border-radius:8px;border:1px solid rgba(255,255,255,0.1)" />
+        <img src="${safeImg(getCharImage(c))}" style="width:120px;height:160px;object-fit:cover;border-radius:8px;border:1px solid rgba(255,255,255,0.1)" />
         <div style="flex:1">
-          <h2 style="margin:0 0 4px;color:#f59e0b;font-size:18px;font-family:'Bangers',cursive,sans-serif;letter-spacing:2px">${c.name}</h2>
-          <p style="margin:0 0 8px;color:#a0a0b0;font-size:12px">${c.title}</p>
-          <p style="margin:0;color:#888;font-size:11px;font-family:monospace">${c.species} · ${c.classRole}</p>
+          <h2 style="margin:0 0 4px;color:#f59e0b;font-size:18px;font-family:'Bangers',cursive,sans-serif;letter-spacing:2px">${esc(c.name)}</h2>
+          <p style="margin:0 0 8px;color:#a0a0b0;font-size:12px">${esc(c.title)}</p>
+          <p style="margin:0;color:#888;font-size:11px;font-family:monospace">${esc(c.species)} · ${esc(c.classRole)}</p>
           <div style="margin-top:12px">
             ${STAT_LABELS.map((s) => statBar(s.label, c.stats[s.key])).join("")}
           </div>
@@ -156,24 +167,24 @@ function exportCharacterSheet(characters: CharacterData[], getCharImage: (c: Cha
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px">
         <div>
           <h4 style="margin:0 0 4px;color:#d4a574;font-size:11px;font-family:monospace;text-transform:uppercase;letter-spacing:2px">Abilities</h4>
-          <div style="display:flex;flex-wrap:wrap;gap:4px">${c.abilities.map((a) => `<span style="background:rgba(217,119,6,0.15);color:#f59e0b;padding:2px 8px;border-radius:4px;font-size:11px;border:1px solid rgba(217,119,6,0.3)">${a}</span>`).join("")}</div>
+          <div style="display:flex;flex-wrap:wrap;gap:4px">${c.abilities.map((a) => `<span style="background:rgba(217,119,6,0.15);color:#f59e0b;padding:2px 8px;border-radius:4px;font-size:11px;border:1px solid rgba(217,119,6,0.3)">${esc(a)}</span>`).join("")}</div>
         </div>
         <div>
           <h4 style="margin:0 0 4px;color:#d4a574;font-size:11px;font-family:monospace;text-transform:uppercase;letter-spacing:2px">Equipment</h4>
-          <div style="display:flex;flex-wrap:wrap;gap:4px">${c.equipment.map((e) => `<span style="background:rgba(100,100,200,0.1);color:#9090d0;padding:2px 8px;border-radius:4px;font-size:11px;border:1px solid rgba(100,100,200,0.2)">${e}</span>`).join("")}</div>
+          <div style="display:flex;flex-wrap:wrap;gap:4px">${c.equipment.map((e) => `<span style="background:rgba(100,100,200,0.1);color:#9090d0;padding:2px 8px;border-radius:4px;font-size:11px;border:1px solid rgba(100,100,200,0.2)">${esc(e)}</span>`).join("")}</div>
         </div>
       </div>
       <div style="margin-top:12px">
         <h4 style="margin:0 0 4px;color:#d4a574;font-size:11px;font-family:monospace;text-transform:uppercase;letter-spacing:2px">Alignment</h4>
-        <p style="margin:0;color:#888;font-size:11px;font-family:monospace">${lawLabel(c.alignmentLaw)} ${moralLabel(c.alignmentMoral)}</p>
+        <p style="margin:0;color:#888;font-size:11px;font-family:monospace">${esc(lawLabel(c.alignmentLaw))} ${esc(moralLabel(c.alignmentMoral))}</p>
       </div>
       <div style="margin-top:8px">
         <h4 style="margin:0 0 4px;color:#d4a574;font-size:11px;font-family:monospace;text-transform:uppercase;letter-spacing:2px">Backstory</h4>
-        <p style="margin:0;color:#a0a0b0;font-size:11px;line-height:1.5">${c.backstory}</p>
+        <p style="margin:0;color:#a0a0b0;font-size:11px;line-height:1.5">${esc(c.backstory)}</p>
       </div>
     </div>`;
 
-  const html = `<!DOCTYPE html><html><head><meta charset="utf-8"><title>${storyTitle} — Character Sheets</title>
+  const html = `<!DOCTYPE html><html><head><meta charset="utf-8"><title>${esc(storyTitle)} — Character Sheets</title>
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
       body{margin:0;padding:24px;background:#090912;color:#e0e0e0;font-family:system-ui,sans-serif}
@@ -182,7 +193,7 @@ function exportCharacterSheet(characters: CharacterData[], getCharImage: (c: Cha
       @media print{body{background:#090912;-webkit-print-color-adjust:exact;print-color-adjust:exact} .grid{columns:2}}
       @media(max-width:800px){.grid{columns:1}}
     </style></head><body>
-    <h1>⚔️ ${storyTitle.toUpperCase()} — CHARACTER SHEETS</h1>
+    <h1>⚔️ ${esc(storyTitle.toUpperCase())} — CHARACTER SHEETS</h1>
     <div class="grid">${characters.map(charCard).join("")}</div>
     </body></html>`;
 
